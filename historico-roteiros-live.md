@@ -1,3 +1,5 @@
 # Histórico de roteiros de live
 
 2026-07-09: execução automática interrompida — repositório `automacoesfacilitoy/historico_de_roteiros` está vazio (sem commits, sem branches, sem arquivo `tema-atual-live.md`). Não há tema pendente para ler nem roteiro de referência ("Roteiro Live - Quem toca essa empresa quando eu nao estiver mais aqui.docx") disponível para seguir como padrão de estrutura/tom. Nenhum roteiro foi gerado nesta execução para evitar inventar o tema, o território de marca ou a estrutura de referência. É necessário que a equipe suba `tema-atual-live.md` (com os campos Status, Tema, Território da marca, Etapa do funil, Por que agora, Por que se encaixa na marca, Ângulo sugerido) e o roteiro de referência no repositório antes da próxima execução.
+
+09/07/2026: ciclo 09/07/2026 sem tema vencedor marcado ainda, execução pulada.
