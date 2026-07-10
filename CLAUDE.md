@@ -20,6 +20,29 @@ Existem dois repositórios encadeados:
 **Não existe mais `tema-atual-live.md`.** A rotina se guia pelo ciclo de criação em que
 está, lendo diretamente `Historico_de_temas/selecao-temas-lives.md`.
 
+## Skills que não carregam neste ambiente — use os arquivos deste repo
+
+Em 2026-07-10, a ferramenta Skill retornou "Unknown skill" tanto para `isabel-tunas-marca`
+quanto para `docx` nesta execução automática, mesmo as duas aparecendo como "enabled" na
+conta do Claude — parece um problema de sincronização entre skills habilitadas na conta e
+skills carregadas neste ambiente de execução específico (não é algo que se resolve por
+config deste repositório). Para não depender disso:
+
+- **Manual da marca:** em vez de invocar a skill `isabel-tunas-marca`, **leia o arquivo
+  `manual-da-marca-isabel-tunas.md`** nesta raiz — é uma cópia integral do manual (mesmo
+  conteúdo que a skill teria). Use-o com a mesma autoridade que a skill teria.
+- **Geração do `.docx`:** em vez de invocar a skill `docx`, **use o script
+  `scripts/gerar_roteiro_docx.py`** (requer `pip install python-docx`, sem depender de
+  LibreOffice) — ele já replica a formatação visual do roteiro de referência (tabela de
+  ficha técnica, bordas douradas, citações em bloco, cues em cinza itálico). Importe a
+  classe `RoteiroBuilder` e siga o exemplo no fim do próprio arquivo.
+
+Tente primeiro a ferramenta Skill normalmente — se ela voltar a funcionar neste ambiente
+no futuro, pode usá-la como fonte primária. Mas **não pare a execução só porque a skill
+não carrega**: os arquivos acima existem exatamente para isso. Só pare e registre o erro
+em `historico-roteiros-live.md` se nem a skill nem esses arquivos estiverem disponíveis
+(por exemplo, se `manual-da-marca-isabel-tunas.md` tiver sido apagado do repositório).
+
 ## Como decidir o que gerar em cada execução
 
 1. Leia `selecao-temas-lives.md` em `Historico_de_temas` e pegue o **primeiro bloco
@@ -50,9 +73,11 @@ está, lendo diretamente `Historico_de_temas/selecao-temas-lives.md`.
 
 ## Diferenças entre os dois blocos na hora de escrever
 
-Ambos usam a mesma skill `isabel-tunas-marca` e a mesma estrutura de 11 seções (ver
-`Roteiro Live - Quem toca essa empresa quando eu nao estiver mais aqui.docx`, nesta raiz,
-como padrão de estrutura/tom/formatação a seguir sempre). A diferença é só de conteúdo:
+Ambos usam o mesmo manual da marca (`manual-da-marca-isabel-tunas.md` — ou a skill
+`isabel-tunas-marca`, se estiver carregando neste ambiente) e a mesma estrutura de 11
+seções (ver `Roteiro Live - Quem toca essa empresa quando eu nao estiver mais aqui.docx`,
+nesta raiz, como padrão de estrutura/tom/formatação a seguir sempre). A diferença é só de
+conteúdo:
 
 - **Bloco Empreendedorismo:** território e etapa do funil tendem a Construir
   Negócios/Construir Princípios/Construir Legados conforme a tabela; a seção de Contexto
@@ -72,7 +97,9 @@ dado externo.
 ## Publicação e registro (por roteiro gerado)
 
 Para cada roteiro gerado nesta execução:
-1. Gere o `.docx` como `Roteiro Live [Empreendedorismo|Livre] - {resumo do tema}.docx`.
+1. Gere o `.docx` como `Roteiro Live [Empreendedorismo|Livre] - {resumo do tema}.docx`
+   (use a skill `docx` se estiver carregando, senão `scripts/gerar_roteiro_docx.py` — ver
+   seção "Skills que não carregam neste ambiente" acima).
 2. Publique como Google Doc nativo na pasta do Drive
    (`https://drive.google.com/drive/folders/14apPwyY3eNRoIYCddyVawa38Qd4CD05q`).
 3. Acrescente uma linha em `historico-roteiros-live.md` com: data, ciclo, bloco
@@ -116,6 +143,10 @@ contagem de parágrafos, reler o texto extraído) em vez de travar a execução.
 - `Roteiro Live - Quem toca essa empresa quando eu nao estiver mais aqui.docx` — roteiro
   de referência validado pela usuária. Padrão de estrutura, tom e formatação a seguir
   sempre.
+- `manual-da-marca-isabel-tunas.md` — cópia de trabalho do manual da marca, para quando a
+  skill `isabel-tunas-marca` não carregar (ver seção acima).
+- `scripts/gerar_roteiro_docx.py` — gerador de `.docx` com a formatação do roteiro de
+  referência, para quando a skill `docx` não carregar (ver seção acima).
 - `historico-roteiros-live.md` — histórico de roteiros gerados (e execuções puladas).
 - Roteiros `.docx` gerados a cada ciclo.
 
