@@ -110,6 +110,22 @@ Para cada roteiro gerado nesta execução:
 Se as duas lives do ciclo forem geradas na mesma execução, um único commit pode levar as
 duas entradas e os dois `.docx`.
 
+## Autorização permanente — PR e merge automáticos
+
+A Isabel autorizou (2026-07-10) que esta rotina opere de ponta a ponta sem pausar para
+aprovação humana no fluxo de Git. Depois do passo 4 acima (roteiros e `historico-roteiros-
+live.md` já commitados e pushados na branch de trabalho da execução):
+
+5. Abra um PR dessa branch para a branch padrão do repositório, **sem perguntar antes**.
+6. Se o PR não tiver conflito com a branch padrão, **faça o merge automaticamente**, também
+   sem perguntar. Só pule o merge automático (deixando o PR aberto e registrando o motivo em
+   `historico-roteiros-live.md`) se houver conflito real ou falha de permissão — nesses
+   casos, sim, é preciso intervenção humana.
+
+Esta autorização vale só para o fluxo desta rotina (commit dos roteiros/`.docx`/histórico e
+o PR/merge que fecha o ciclo) — não é uma autorização geral para outras ações destrutivas
+ou fora desse escopo.
+
 ## Nota técnica importante — upload de arquivos binários (.docx)
 
 As ferramentas MCP do GitHub (`create_or_update_file`, `push_files`) truncam/corrompem
